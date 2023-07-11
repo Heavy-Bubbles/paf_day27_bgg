@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- The <code> tag is used to define a piece of computer code. 
+    The content inside is displayed in the browser's default monospace font. -->
+    <h1>Search result for '<code data-th-text="${game}"></code>'</h1>
+
+    <div data-th-unless="${#lists.isEmpty(games)}">
+        <ul>
+            <li data-th-each="g : ${games}" data-th-object="${g}">
+                <h4>
+                    <a data-th-href="@{/game/{gid}(gid=*{gid})}" data-th-text="*{name}"></a>
+                </h4>
+            </li>
+        </ul>
+    </div>
+    <div data-th-if="${#lists.isEmpty(games)}">
+        <h2>No games found</h2>
+    </div>
+</body>
+</html>
